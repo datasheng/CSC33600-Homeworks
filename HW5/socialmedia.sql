@@ -100,5 +100,6 @@ SELECT user.user_name, COUNT(user_followers.follower_ID) AS total_followers
 FROM user
 LEFT JOIN user_followers ON user.user_ID = user_followers.followed_ID
 LEFT JOIN user_check_in ON user.user_ID = user_check_in.user_ID
+WHERE user_check_in.user_ID IS NULL
 GROUP BY user.user_ID, user.user_name
 ORDER BY user.user_name ASC, total_followers DESC;
